@@ -3,7 +3,7 @@
 ## Sobre a esteganografia
 A esteganografia é o ato de ocultar informação se utilizando de uma cobertura (isto é, uma mídia que servirá para esconder essa informação). Dependendo do tipo, essa cobertura recebe nomes como *cover image* (se for uma imagem), *cover audio*, *cover text*, entre outros. 
 
-Após o processo de oculturação, obtêm-se um *stego-object* (estego-objeto).
+Após o processo de ocultação, obtêm-se um *stego-object* (estego-objeto).
 
 ## Sobre o método LSB
 O método LSB (do inglês *least significant bit*, bit menos significativo) se baseia em alterar o valor das cores do pixels de uma imagem para que a leitura do bit mais a direita de cada canal de cor de cada pixel dessa imagem retorne uma informação ocultada em sua representação binária.
