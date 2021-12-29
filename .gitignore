@@ -1,5 +1,5 @@
 # Desconsiderar imagens de teste por enquanto!
-*.png
+/*.png
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
