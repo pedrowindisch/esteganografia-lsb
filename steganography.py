@@ -74,9 +74,16 @@ class Steganography:
     def set_current_unit_value(self, new_value):
         self.image[self.current_pixel][self.current_channel] = new_value
 
-    def read_byte(self):
-        byte = bin(int(self.image[self.current_pixel][self.current_channel]))
+    def read_bit(self):
+        bit = bin(self.get_current_unit_value())[-1]
         self.next_unit()
+
+        return bit
+
+    def read_byte(self):
+        byte = ""
+
+        for i in range(8): byte += self.read_bit()
 
         return byte
 
@@ -84,7 +91,7 @@ class Steganography:
         if not isinstance(bit, int): 
             bit = int(bit)
 
-        current_channel_value = self.get_current_slot_value()
+        current_channel_value = self.get_current_unit_value()
         
         if bit == 0:
             # o LSB de ~1 é 0 (~1 = 0b1110)
@@ -94,7 +101,7 @@ class Steganography:
             # n OR 1 sempre retorna 1
             new_channel_value = current_channel_value | 1
 
-        self.set_current_slot_value(new_channel_value)
+        self.set_current_unit_value(new_channel_value)
         self.next_unit()
 
     def write_byte(self, byte: str):
@@ -119,8 +126,8 @@ class Steganography:
         # Adiciona a quantidade de caracteres da mensagem
         # a ser encodada no começo da imagem.
         # Serve para delimitar quantos pixels ler
-        # quando "decodar" a imagem 
-        # self.write_byte(bin(len(value)))
+        # quando "decodar" a imagem
+        self.write_byte(bin(len(self.message_to_encode)))
 
         for byte in self.message_to_encode.encode():
             byte_as_string = bin(byte)
@@ -129,12 +136,13 @@ class Steganography:
     def decode_image(self):
         decoded_message = ""
 
-        for i in range(5):
-            current_char = ""
-            for i in range(8):
-                current_char += self.read_byte()[-1]
-            decoded_message += chr(int(current_char, 2))
+        # A quantidade de caracteres pra ler
+        # fica salva no começo da imagem
+        qnty_chars_to_read = int(self.read_byte(), 2)
 
+        for i in range(qnty_chars_to_read):
+            decoded_message += chr(int(self.read_byte(), 2))
+            
         return decoded_message
 
     def save_image(self):
@@ -157,7 +165,6 @@ if __name__ == "__main__":
     else: steg.out_file = "steg-" + args["file"]
 
     if args["action"] == SteganographyAction.ENCODE:
-        
         steg.message_to_encode = args["message"] 
         steg.encode_image()
         steg.save_image()
