@@ -87,8 +87,11 @@ class Steganography:
         current_channel_value = self.get_current_slot_value()
         
         if bit == 0:
+            # o LSB de ~1 é 0 (~1 = 0b1110)
+            # n AND 0 sempre retorna 0 
             new_channel_value = current_channel_value & ~1
         else:
+            # n OR 1 sempre retorna 1
             new_channel_value = current_channel_value | 1
 
         self.set_current_slot_value(new_channel_value)
