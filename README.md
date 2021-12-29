@@ -38,6 +38,9 @@ Os dois exemplos acima são visivelmente iguais, mas tecnicamente representam du
 
 Podemos usar esse bit menos significativo para "salvar" uma mensagem (em sua representação binária).
 
+### Desvantagens do método
+Se a estego-imagem sofrer algum tipo de recorte, compressão ou edição, a mensagem ocultada pelo método LSB pode deixar de existir. Além disso, por meio da esteganálise, a mensagem pode ser facilmente descoberta. A mensagem pode ser criptografada antes da ocultação para aprimorar a segurança.
+
 ## Referências
 
 http://www.libpng.org/pub/png/book/chapter08.html
