@@ -68,10 +68,10 @@ class Steganography:
             else:
                 self.current_pixel = (self.current_pixel[Steganography.PixelXPosition] + 1, self.current_pixel[Steganography.PixelYPosition]) 
 
-    def get_current_slot_value(self):
+    def get_current_unit_value(self):
         return self.image[self.current_pixel][self.current_channel]
 
-    def set_current_slot_value(self, new_value):
+    def set_current_unit_value(self, new_value):
         self.image[self.current_pixel][self.current_channel] = new_value
 
     def read_byte(self):
