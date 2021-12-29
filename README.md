@@ -12,10 +12,9 @@ Para ler a informação ocultada:
 ```bash
 $ python steganography.py decode "nome_do_arquivo.png"
 ```
-
-Imagem original             |  Imagem modificada (com informação oculta)
-:-------------------------:|:-------------------------:
-![](examples/original_img.png)  |  ![](examples/img_with_encoded_message.png)
+<p align=center>
+    <img src="examples/original_img.png" width=250 alt="Imagem original, sem modificação"> <img src="examples/img_with_encoded_message.png" width=250 alt="Imagem que sofreu processo de esteganografia">
+</p>
 
 Apesar das imagens serem visualmente iguais, ao "decodar" a segunda imagem acima, obtêm-se a mensagem "Photo by Marliese Streefland on Unsplash". A esteganografia pode ser uma forma de "assinar" imagens digitais.
 
