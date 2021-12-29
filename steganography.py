@@ -142,7 +142,7 @@ class Steganography:
 
         for i in range(qnty_chars_to_read):
             decoded_message += chr(int(self.read_byte(), 2))
-            
+
         return decoded_message
 
     def save_image(self):

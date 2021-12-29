@@ -13,6 +13,12 @@ Para ler a informação ocultada:
 $ python steganography.py decode "nome_do_arquivo.png"
 ```
 
+Imagem original             |  Imagem modificada (com informação oculta)
+:-------------------------:|:-------------------------:
+![](examples/original_img.png)  |  ![](examples/img_with_encoded_message.png)
+
+Apesar das imagens serem visualmente iguais, ao "decodar" a segunda imagem acima, obtêm-se a mensagem "Photo by Marliese Streefland on Unsplash". A esteganografia pode ser uma forma de "assinar" imagens digitais.
+
 ## Sobre a esteganografia
 A esteganografia é o ato de ocultar informação se utilizando de uma cobertura (isto é, uma mídia que servirá para esconder essa informação). Dependendo do tipo, essa cobertura recebe nomes como *cover image* (se for uma imagem), *cover audio*, *cover text*, entre outros. 
 
